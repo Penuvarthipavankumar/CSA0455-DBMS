@@ -1,0 +1,81 @@
+mysql> use cvb;
+Database changed
+mysql> create table asd(name varchar(12),id int,salary int);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> desc asd;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| name   | varchar(12) | YES  |     | NULL    |       |
+| id     | int         | YES  |     | NULL    |       |
+| salary | int         | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table add branch varchar(34);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'add branch varchar(34)' at line 1
+mysql> alter table asd add branch varchar(34);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc asd;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| name   | varchar(12) | YES  |     | NULL    |       |
+| id     | int         | YES  |     | NULL    |       |
+| salary | int         | YES  |     | NULL    |       |
+| branch | varchar(34) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table asd modify column branch varchar(55);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc asd;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| name   | varchar(12) | YES  |     | NULL    |       |
+| id     | int         | YES  |     | NULL    |       |
+| salary | int         | YES  |     | NULL    |       |
+| branch | varchar(55) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> rename table asd to dsa;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> desc dsa;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| name   | varchar(12) | YES  |     | NULL    |       |
+| id     | int         | YES  |     | NULL    |       |
+| salary | int         | YES  |     | NULL    |       |
+| branch | varchar(55) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table dsa rename column branch to city;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc dsa;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| name   | varchar(12) | YES  |     | NULL    |       |
+| id     | int         | YES  |     | NULL    |       |
+| salary | int         | YES  |     | NULL    |       |
+| city   | varchar(55) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table dsa drop column branch;
+ERROR 1091 (42000): Can't DROP 'branch'; check that column/key exists
+mysql> alter table dsa drop column city;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
